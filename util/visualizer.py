@@ -60,7 +60,7 @@ class Visualizer():
                         img_path = os.path.join(self.img_dir, 'epoch%.3d_%s_%d.png' % (epoch, label, i))
                         util.save_image(image_numpy[i], img_path)
                 else:
-                    img_path = os.path.join(self.img_dir, 'epoch%.3d_%s.jpg' % (epoch, label))
+                    img_path = os.path.join(self.img_dir, 'epoch%.3d_%s.png' % (epoch, label))
                     util.save_image(image_numpy, img_path)
 
             # update website
@@ -79,7 +79,7 @@ class Visualizer():
                             txts.append(label+str(i))
                             links.append(img_path)
                     else:
-                        img_path = 'epoch%.3d_%s.jpg' % (n, label)
+                        img_path = 'epoch%.3d_%s.png' % (n, label)
                         ims.append(img_path)
                         txts.append(label)
                         links.append(img_path)
