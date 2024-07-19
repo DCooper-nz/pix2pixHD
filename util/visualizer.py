@@ -43,7 +43,7 @@ class Visualizer():
                     s = StringIO()
                 except:
                     s = BytesIO()
-                scipy.misc.toimage(image_numpy).save(s, format="jpeg")
+                scipy.misc.toimage(image_numpy).save(s, format="png")
                 # Create an Image object
                 img_sum = self.tf.Summary.Image(encoded_image_string=s.getvalue(), height=image_numpy.shape[0], width=image_numpy.shape[1])
                 # Create a Summary value
@@ -57,7 +57,7 @@ class Visualizer():
             for label, image_numpy in visuals.items():
                 if isinstance(image_numpy, list):
                     for i in range(len(image_numpy)):
-                        img_path = os.path.join(self.img_dir, 'epoch%.3d_%s_%d.jpg' % (epoch, label, i))
+                        img_path = os.path.join(self.img_dir, 'epoch%.3d_%s_%d.png' % (epoch, label, i))
                         util.save_image(image_numpy[i], img_path)
                 else:
                     img_path = os.path.join(self.img_dir, 'epoch%.3d_%s.jpg' % (epoch, label))
@@ -74,7 +74,7 @@ class Visualizer():
                 for label, image_numpy in visuals.items():
                     if isinstance(image_numpy, list):
                         for i in range(len(image_numpy)):
-                            img_path = 'epoch%.3d_%s_%d.jpg' % (n, label, i)
+                            img_path = 'epoch%.3d_%s_%d.png' % (n, label, i)
                             ims.append(img_path)
                             txts.append(label+str(i))
                             links.append(img_path)
